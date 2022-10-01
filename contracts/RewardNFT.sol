@@ -19,6 +19,7 @@ contract RewardNFT is ERC721 {
     }
 
     function mint() external {
+        require(balanceOf(msg.sender) == 0, "one per member");
         bool success = paymentToken.transferFrom(msg.sender, address(this), mintPrice);
         require(success);
         _mint(msg.sender, _totalSupply);
