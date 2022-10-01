@@ -1,5 +1,5 @@
 import { useInitialTheme } from "hooks/useInitialTheme";
-import { Main } from "pages";
+import { Main, Profile } from "pages";
 import { PATHS } from "constants/paths";
 import {
   BrowserRouter,
@@ -17,7 +17,7 @@ function App() {
       <Routes>
         <Route path={PATHS.home} element={<Main />} />
         <Route path={PATHS.community} element={<Main />} />
-        <Route path={PATHS.profile} element={<Main />} />
+        <Route path={PATHS.profile} element={<Profile />} />
         <Route path="*" element={<Navigate to={PATHS.home} />} />
       </Routes>
       <NavigationAnimator />
