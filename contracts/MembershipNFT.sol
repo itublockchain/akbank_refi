@@ -4,7 +4,7 @@ pragma solidity ^0.8.17;
 import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 
-contract RewardNFT is ERC721, Ownable {
+contract MembershipNFT is ERC721, Ownable {
     uint256 private _tokenId;
     uint256 private _totalSupply;
     
