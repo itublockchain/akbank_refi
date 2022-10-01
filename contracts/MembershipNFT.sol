@@ -23,4 +23,8 @@ contract RewardNFT is ERC721, Ownable {
         uint256 IdToBurn = addressToId[memberToKick];
         _burn(IdToBurn); 
     }
+
+    function isMember(address member) external view returns (bool) {
+        return balanceOf(member) == 1;
+    }
 }
