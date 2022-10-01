@@ -25,4 +25,8 @@ contract RewardNFT is ERC721 {
         _mint(msg.sender, _totalSupply);
         unchecked { _totalSupply++; }
     }
+
+    function totalSupply() external view returns (uint256) {
+        return _totalSupply;
+    }
 }
