@@ -32,12 +32,21 @@
             gap: 30px;
 
             .profile {
-                display: flex;
-                align-items: center;
 
-                img{
-                    width: 50px;
-                    margin-right: 10px;
+                a {
+                    display: flex;
+                    align-items: center;
+                    text-decoration: none;
+                    color: black;
+
+                    &:hover {
+                        text-decoration: none;
+                    }
+
+                    img {
+                        width: 50px;
+                        margin-right: 10px;
+                    }
                 }
             }
 

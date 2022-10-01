@@ -25,11 +25,16 @@ const Navbar = () => {
         <div className={styles.buttons}>
           {auth ? (
             <div className={styles.profile}>
-              <img src={PROFILE}></img>
-              <div className={styles.info}>
-                <div>Alim</div>
-                <div>{address ? formatAddress(address) : "0x..."}</div>
-              </div>
+              <a
+                href="http://localhost:3000/profile"
+                // target="_blank"
+              >
+                <img src={PROFILE}></img>
+                <div className={styles.info}>
+                  <div>Alim</div>
+                  <div>{address ? formatAddress(address) : "0x..."}</div>
+                </div>
+              </a>
             </div>
           ) : (
             <div className={styles.connectButton}>
