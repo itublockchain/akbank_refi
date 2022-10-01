@@ -1,0 +1,70 @@
+.wrapper {
+    display: flex;
+    flex-direction: column;
+
+    .title {
+        margin-top: 15px;
+        margin-left: 48px;
+        margin-bottom: 15px;
+        display: flex;
+        align-items: center;
+        font: normal normal bold 36px/46px Apple SD Gothic Neo;
+    }
+
+
+    .proposal {
+        display: flex;
+        align-items: center;
+        margin: 5px 50px;
+        justify-content: space-between;
+        width: 100%;
+
+        .infos {
+            display: flex;
+
+            .proposalImage {
+                img {
+                    width: 90px;
+                    margin-right: 15px;
+                }
+            }
+
+            .texts {
+                display: flex;
+                flex-direction: column;
+
+                .title {
+                    font: normal normal 300 28px/33px Apple SD Gothic Neo;
+                    font-weight: 400;
+                    margin: 0;
+                    margin-bottom: 4px;
+                }
+
+                .members {
+                    display: flex;
+                    align-items: center;
+
+                    .logos {
+                        display: flex;
+                        margin-right: 5px;
+
+                        img {
+                            width: 30px;
+                            height: 30px;
+                        }
+                    }
+
+                    .names {
+                        display: flex;
+                        gap: 3px;
+                        font: normal normal 600 12px/15px Apple SD Gothic Neo;
+                    }
+                }
+            }
+        }
+    }
+
+    button{
+        border-radius: 20px;
+    }
+}

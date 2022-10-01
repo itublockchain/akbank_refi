@@ -6,7 +6,7 @@ const Main = () => {
     <div className={styles.wrapper}>
       <Navbar />
       <Profile />
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 };
