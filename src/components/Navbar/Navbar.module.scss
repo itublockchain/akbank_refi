@@ -31,7 +31,15 @@
             align-items: center;
             gap: 30px;
 
-            .connectButton {}
+            .profile {
+                display: flex;
+                align-items: center;
+
+                img{
+                    width: 50px;
+                    margin-right: 10px;
+                }
+            }
 
             .themeChanger {
                 border-radius: 8px;

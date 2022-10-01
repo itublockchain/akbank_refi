@@ -1,37 +1,25 @@
 import styles from "./Profile.module.scss";
 import HEADER from "assets/header.png";
 import LOGO from "assets/ITUBCLogo.jpeg";
-import ALIM from "assets/alim.png";
-import ULAS from "assets/ulas.png";
-import TAHIR from "assets/tahos81.png";
-import HATUN from "assets/hatun.png";
 import CALENDER from "assets/calender.png";
 import { Button } from "ui";
+import { Members } from "constants/Members";
+import { Proposal } from "components/Profile/Proposal/Proposal";
+import { Needs } from "components/Profile/Needs/Needs";
+import { Bazaar } from "components/Profile/Bazaar/Bazaar";
+import { Sponsorship } from "components/Profile/Sponsorship/Sponsorship";
+import { useState } from "react";
+import { Proposals } from "constants/Proposals";
 
-const Members = [
-  {
-    profilePhoto: ALIM,
-    name: "Alim Şahin",
-    role: "ITU Blockchain Board Member",
-  },
-  {
-    profilePhoto: HATUN,
-    name: "Hatun Özcan",
-    role: "ITU Blockchain Board Member",
-  },
-  {
-    profilePhoto: ULAS,
-    name: "Ulaş Erdoğan",
-    role: "ITU Blockchain Board Member",
-  },
-  {
-    profilePhoto: TAHIR,
-    name: "Tahir Özpala",
-    role: "ITU Blockchain Board Member",
-  },
-];
+enum WhichPage {
+  "PROJECTS",
+  "PROPOSALS",
+  "BAZAAR",
+  "SPONSORSHIP",
+}
 
 const Profile = () => {
+  const [whichPage, setWhichPage] = useState<WhichPage>(WhichPage.PROPOSALS);
   return (
     <div className={styles.wrapper}>
       <div className={styles.header}>
@@ -65,8 +53,67 @@ const Profile = () => {
             <img src={CALENDER}></img>
           </div>
         </div>
-        <div className={styles.box1}></div>
-        <div className={styles.box2}></div>
+
+        <div className={styles.proposals}>
+          <div className={styles.whichPage}>
+            <div
+              onClick={() => setWhichPage(WhichPage.PROPOSALS)}
+              className={
+                whichPage === WhichPage.PROPOSALS
+                  ? styles.pageButton
+                  : styles.notPageButton
+              }
+            >
+              Proposals
+            </div>
+            <div
+              onClick={() => setWhichPage(WhichPage.PROJECTS)}
+              className={
+                whichPage === WhichPage.PROJECTS
+                  ? styles.pageButton
+                  : styles.notPageButton
+              }
+            >
+              Projects
+            </div>
+            <div
+              onClick={() => setWhichPage(WhichPage.BAZAAR)}
+              className={
+                whichPage === WhichPage.BAZAAR
+                  ? styles.pageButton
+                  : styles.notPageButton
+              }
+            >
+              Bazaar
+            </div>
+            <div
+              onClick={() => setWhichPage(WhichPage.SPONSORSHIP)}
+              className={
+                whichPage === WhichPage.SPONSORSHIP
+                  ? styles.pageButton
+                  : styles.notPageButton
+              }
+            >
+              Sponsorship
+            </div>
+          </div>
+          <div className={styles.brief}>
+            The first university #blockchain society in Turkey! Subscribe our
+            weekly blockchain mail newsletter 📨 @GenesisBchain and JOIN US to
+            #buidl
+          </div>
+          <div className={styles.boxs}>
+            {WhichPage.PROPOSALS === whichPage ? (
+              <Proposal />
+            ) : WhichPage.PROJECTS === whichPage ? (
+              <Needs />
+            ) : WhichPage.BAZAAR === whichPage ? (
+              <Bazaar />
+            ) : (
+              <Sponsorship />
+            )}
+          </div>
+        </div>
       </div>
     </div>
   );

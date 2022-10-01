@@ -5,46 +5,49 @@ import LOGO2 from "assets/logo.svg";
 import { Button } from "ui";
 import { formatAddress } from "utils/formatAddress";
 import { clsnm } from "utils/clsnm";
+import useSetAccount from "hooks/useSetAccount";
+import { useAccount } from "hooks/useAccount";
+import PROFILE from "assets/alim.png";
+import account from "store/slicers/account";
 
 const Navbar = () => {
   const { theme, toggleTheme } = useTheme();
+  const { requestAccounts } = useSetAccount();
+  const { auth, address } = useAccount();
   return (
     <div className={styles.wrapper}>
       <div className={styles.navbar}>
         <div className={styles.logo}>
           <img src={LOGO2}></img>
-          <div>Sirer</div>
+          <div>Ağaç Dikemedik Ama</div>
         </div>
 
         <div className={styles.buttons}>
-          <div className={styles.connectButton}>
-            {" "}
-            <Button
-              height="40px"
-              // onClick={() => {
-              //   if (!auth) connect();
-              //   if (!isRightNetwork) {
-              //     switchTo();
-              //   } else {
-              //     modal.open();
-              //   }
-              // }}
-              color={theme === "light" ? "akbank" : "akbank"}
-              className={clsnm(
-                // !mobile ? styles.themeChanger : styles.themeChangerMobile,
-                styles.accountButton
-              )}
-            >
-              {
-                // !isRightNetwork && auth
-                //   ? "Switch network"
-                //   : auth && address
-                //   ? formatAddress(address)
-                // :
-                "Connect Wallet"
-              }
-            </Button>
-          </div>
+          {auth ? (
+            <div className={styles.profile}>
+              <img src={PROFILE}></img>
+              <div className={styles.info}>
+                <div>Alim</div>
+                <div>{address ? formatAddress(address) : "0x..."}</div>
+              </div>
+            </div>
+          ) : (
+            <div className={styles.connectButton}>
+              <Button
+                height="40px"
+                onClick={() => {
+                  if (!auth) requestAccounts();
+                }}
+                color={theme === "light" ? "akbank" : "akbank"}
+                className={clsnm(
+                  // !mobile ? styles.themeChanger : styles.themeChangerMobile,
+                  styles.accountButton
+                )}
+              >
+                {"Connect Wallet"}
+              </Button>
+            </div>
+          )}
 
           {/* <div
             className={styles.themeChanger}

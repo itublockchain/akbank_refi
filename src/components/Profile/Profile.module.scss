@@ -21,8 +21,9 @@
 
     .communityInfos {
         display: flex;
-        justify-content: space-between;
+        // justify-content: space-between;
         margin-right: 100px;
+        gap: 50px;
         margin-top: 40px;
 
         .members {
@@ -44,20 +45,124 @@
 
             .calender {
                 margin-top: 25px;
+
                 img {
                     width: 230px;
                 }
             }
         }
 
-        .box1 {
-            width: 500px;
-            background-color: red;
+        .proposals {
+            width: 800px;
             height: 400px;
+
+            .whichPage {
+                padding-left: 10px;
+                border-bottom: 1px solid #707070;
+
+                display: flex;
+                align-items: center;
+
+                .pageButton {
+                    border-top-left-radius: 10px;
+                    border-top-right-radius: 10px;
+                    border: 1px solid #707070;
+                    background: #F0E8FF 0% 0% no-repeat padding-box;
+                    height: 50px;
+                    width: 120px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    font: normal normal 300 20px/43px Apple SD Gothic Neo;
+                    font-weight: 400;
+                    cursor: pointer;
+                }
+
+                .notPageButton {
+                    border-top-left-radius: 10px;
+                    border-top-right-radius: 10px;
+                    border: 1px solid transparent;
+                    background: transparent 0% 0% no-repeat padding-box;
+                    height: 50px;
+                    width: 120px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    font: normal normal 300 20px/43px Apple SD Gothic Neo;
+                    font-weight: 400;
+                    cursor: pointer;
+
+                    &:hover {
+                        border: 1px solid #c5c5c5;
+                        background: #f9f7fe 0% 0% no-repeat padding-box;
+                    }
+                }
+            }
+
+            .brief {
+                margin-bottom: 20px;
+                margin-top: 10px;
+            }
+
+            .boxs {
+                display: flex;
+                justify-content: space-between;
+                width: 100%;
+                border: 1px solid #211B51;
+                border-radius: 49px;
+
+                .needs {
+                    border: 1px solid #211B51;
+                    border-radius: 49px;
+                    max-width: 380px;
+                    width: 100%;
+
+                    .title {
+                        margin-top: 10px;
+                        margin-left: 48px;
+                        display: flex;
+                        align-items: center;
+                        font: normal normal bold 36px/46px Apple SD Gothic Neo;
+
+                        .dot {
+                            margin-right: 5px;
+                            width: 20px;
+                            height: 20px;
+                            border-radius: 50%;
+                            background-color: #A6D7D9;
+                        }
+                    }
+                }
+
+                .proposals {
+                    border: 1px solid #211B51;
+                    border-radius: 49px;
+                    max-width: 380px;
+                    width: 100%;
+
+                    .title {
+                        margin-top: 10px;
+                        margin-left: 48px;
+                        display: flex;
+                        align-items: center;
+                        font: normal normal bold 36px/46px Apple SD Gothic Neo;
+
+                        .dot {
+                            margin-right: 5px;
+                            width: 20px;
+                            height: 20px;
+                            border-radius: 50%;
+                            background-color: #A6D7D9;
+                        }
+                    }
+                }
+            }
+
+
         }
 
-        .box2 {
-            width: 500px;
+        .addProposal {
+            width: 100px;
             background-color: blue;
             height: 400px;
         }

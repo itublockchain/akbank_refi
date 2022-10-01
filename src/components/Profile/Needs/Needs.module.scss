@@ -1,15 +1,17 @@
 .wrapper {
     display: flex;
     flex-direction: column;
+    width: 100%;
+
 
     .title {
         margin-top: 15px;
         margin-left: 48px;
         margin-bottom: 15px;
+        margin-right: 30px;
         display: flex;
         align-items: center;
         justify-content: space-between;
-        width: 100%;
 
         .name {
             font: normal normal bold 36px/46px Apple SD Gothic Neo;
@@ -23,6 +25,13 @@
         margin: 5px 50px;
         justify-content: space-between;
         width: 100%;
+        position: relative;
+
+        .ticket {
+            position: absolute;
+            top: 0px;
+            right: 75px;
+        }
 
         .infos {
             display: flex;
