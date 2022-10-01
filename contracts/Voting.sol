@@ -38,6 +38,7 @@ contract Voting is ERC20 {
     IMembership membership;
 
     mapping(uint256 => Labour) IdToLabour;
+    mapping(address => mapping(uint256 => bool)) voted;
 
     constructor(string memory name, string memory symbol, address _membershipAddress) ERC20(name, symbol) {
         membership = IMembership(_membershipAddress);
@@ -81,8 +82,20 @@ contract Voting is ERC20 {
         IdToLabour[labourId].settled = true;
     }
 
-    function vote(Vote) external onlyMember {
+    function useVote(uint256 labourId, Vote vote) external onlyMember {
+        Labour storage labour = IdToLabour[labourId];
+        require(!voted[msg.sender][labourId], "already voted");
+        if (vote == Vote.DENY) {
+            unchecked { labour.denyCount++; }
+        } else if (vote == Vote.LOW) {
+            unchecked { labour.lowCount++; }
+        } else if (vote == Vote.MEDIUM) {
+            unchecked { labour.mediumCount++; }
+        } else if (vote == Vote.HIGH) {
+            unchecked { labour.highCount++; }
+        }
 
+        voted[msg.sender][labourId] = true;
     }
 
     function calculateWinningVote(Labour memory labour) internal view returns (Vote) {
