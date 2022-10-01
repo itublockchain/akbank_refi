@@ -24,6 +24,7 @@ contract RewardNFT is ERC721, Ownable {
         require(balanceOf(memberToKick) == 1, "not a member");
         uint256 IdToBurn = addressToId[memberToKick];
         _burn(IdToBurn); 
+        addressToId[memberToKick] = 0;
         unchecked { _totalSupply--; }
     }
 
@@ -33,5 +34,14 @@ contract RewardNFT is ERC721, Ownable {
 
     function numberOfMembers() external view returns (uint256) {
         return _totalSupply;
+    }
+
+    //Only allows transfers if it is minting or burning
+    function _beforeTokenTransfer(
+        address from,
+        address to,
+        uint256 tokenId
+    ) internal override {
+        if(from != address(0) && to != address(0)) revert();
     }
 }

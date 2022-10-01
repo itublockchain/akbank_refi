@@ -19,7 +19,8 @@ contract Voting is ERC20 {
 
     struct Labour {
         address creator;
-        uint96 startTime;
+        uint88 startTime;
+        bool settled;
         string content;
         uint64 denyCount;
         uint64 lowCount;
@@ -50,7 +51,8 @@ contract Voting is ERC20 {
     function startVote(string calldata content) external onlyMember {
         Labour memory labour = Labour(
             msg.sender,
-            uint96(block.timestamp),
+            uint88(block.timestamp),
+            false,
             content,
             0,
             0,
@@ -64,6 +66,8 @@ contract Voting is ERC20 {
 
     function settleVote(uint256 labourId) external onlyMember {
         Labour memory labour = IdToLabour[labourId];
+        require(labour.startTime + VOTING_LENGTH >= block.timestamp, "voting in progress");
+        require(!labour.settled, "voting already settled");
         Vote winningVote = calculateWinningVote(labour);
 
         if (winningVote == Vote.LOW) {
@@ -73,13 +77,20 @@ contract Voting is ERC20 {
         } else if (winningVote == Vote.HIGH) {
             _mint(labour.creator, HIGH_MINT);
         }
+
+        IdToLabour[labourId].settled = true;
     }
 
-    function vote() external onlyMember {}
+    function vote(Vote) external onlyMember {
 
-    function calculateWinningVote(Labour memory labour) internal pure returns (Vote) {
+    }
+
+    function calculateWinningVote(Labour memory labour) internal view returns (Vote) {
         uint256 totalYes = labour.lowCount + labour.mediumCount + labour.highCount;
-        if (labour.denyCount >= totalYes) {
+        uint256 totalVote = totalYes + labour.denyCount;
+        uint256 totalMember = membership.numberOfMembers();
+
+        if (labour.denyCount >= totalYes || (totalVote * 2) < totalMember) {
             return Vote.DENY;
         }
 
