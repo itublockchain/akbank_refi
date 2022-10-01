@@ -1,0 +1,89 @@
+.wrapper {
+    position: relative;
+
+    .header {
+        img {
+            width: 100%;
+        }
+    }
+
+    .profilePhoto {
+        position: absolute;
+        left: 90px;
+        top: 125px;
+
+        img {
+            border: 2px solid black;
+            width: 120px;
+            border-radius: 50%;
+        }
+    }
+
+    .communityInfos {
+        display: flex;
+        justify-content: space-between;
+        margin-right: 100px;
+        margin-top: 40px;
+
+        .members {
+            width: 300px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            .communityName {
+                font-size: 24px;
+                font-weight: 600;
+            }
+
+            .memberCount {
+                font-size: 14px;
+                color: #b19cd7;
+                margin-bottom: 20px;
+            }
+
+            .calender {
+                margin-top: 25px;
+                img {
+                    width: 230px;
+                }
+            }
+        }
+
+        .box1 {
+            width: 500px;
+            background-color: red;
+            height: 400px;
+        }
+
+        .box2 {
+            width: 500px;
+            background-color: blue;
+            height: 400px;
+        }
+    }
+}
+
+
+.memberWrapper {
+    display: flex;
+    margin: 5px 0px;
+
+    .photo {
+        img {
+            width: 40px;
+            margin-right: 5px;
+        }
+    }
+
+    .infos {
+        .name {
+            font-weight: 700;
+        }
+
+        .role {
+            font-weight: 400;
+            font-size: 12px;
+        }
+    }
+}

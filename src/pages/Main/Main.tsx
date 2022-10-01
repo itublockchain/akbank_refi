@@ -1,10 +1,12 @@
 import styles from "./Main.module.scss";
-import { Example } from "components";
+import { Landing, Navbar, Footer, Profile } from "components";
 
 const Main = () => {
   return (
     <div className={styles.wrapper}>
-      <Example />
+      <Navbar />
+      <Profile />
+      <Footer />
     </div>
   );
 };

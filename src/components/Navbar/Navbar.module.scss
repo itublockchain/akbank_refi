@@ -1,0 +1,48 @@
+.wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 75px;
+
+    .navbar {
+        max-width: 1000px;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+
+            img {
+                width: 50px;
+            }
+
+            div {
+                font-weight: bold;
+            }
+        }
+
+        .buttons {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+
+            .connectButton {}
+
+            .themeChanger {
+                border-radius: 8px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 40px;
+                background-color: lightblue;
+                height: 40px;
+            }
+        }
+    }
+
+}
