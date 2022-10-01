@@ -5,7 +5,18 @@ import { Proposals } from "constants/Proposals";
 const Proposal = () => {
   return (
     <div className={styles.wrapper}>
-      <div className={styles.title}>Proposals</div>
+      <div className={styles.title}>
+        <div className={styles.name}>Proposals</div>
+        <Button
+          fontSize="fs18"
+          fontWeight="fw600"
+          color="member"
+          width="160px"
+          height="42px"
+        >
+          Add Proposal
+        </Button>
+      </div>
       {Proposals.map((data: any, i: number) => {
         return (
           <div className={styles.proposal}>

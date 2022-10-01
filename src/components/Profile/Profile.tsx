@@ -106,13 +106,12 @@ const Profile = () => {
             {WhichPage.PROPOSALS === whichPage ? (
               <Proposal />
             ) : WhichPage.PROJECTS === whichPage ? (
-              <Bazaar />
+              <Needs />
             ) : WhichPage.BAZAAR === whichPage ? (
               <Bazaar />
             ) : (
               <Sponsorship />
             )}
-
           </div>
         </div>
       </div>
