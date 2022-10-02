@@ -2,7 +2,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 75px;
+    height: 60px;
 
     .navbar {
         max-width: 1000px;
@@ -16,6 +16,10 @@
             align-items: center;
             justify-content: center;
             gap: 20px;
+
+            .projectName {
+                font: normal normal 600 22px/29px Apple SD Gothic Neo;
+            }
 
             img {
                 width: 50px;

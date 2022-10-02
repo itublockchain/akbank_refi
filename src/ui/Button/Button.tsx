@@ -17,14 +17,15 @@ interface ButtonProps extends ComponentPropsWithoutRef<"button"> {
     | "transparentWhite"
     | "akbank"
     | "member"
-    | "transparentBlack";
+    | "transparentBlack"
+    | "landing";
   textPosition?: "center" | "left" | "right";
   height?: string;
   width?: string;
   fullwidth?: boolean;
   disabled?: boolean;
   loading?: boolean;
-  fontSize?: "fs12" | "fs14" | "fs16" | "fs18";
+  fontSize?: "fs12" | "fs14" | "fs16" | "fs18" | "fs20" | "fs22";
   fontWeight?: "fw400" | "fw500" | "fw600" | "fw700";
   lineHeight?: "lhNormal" | "lh22";
 }

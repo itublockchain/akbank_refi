@@ -58,6 +58,16 @@
     }
   }
 
+  &.landing {
+    background: #438880;
+    border-radius: 20px;
+    color: white;
+
+    &:hover {
+      background: #5f9f98;
+    }
+  }
+
   &.member {
     background: #A6D6DA 0% 0% no-repeat padding-box;
     border: 1px solid #438880;
@@ -149,6 +159,14 @@
 
   .fs18 {
     font-size: 18px;
+  }
+
+  .fs20 {
+    font-size: 20px;
+  }
+
+  .fs22 {
+    font-size: 22px;
   }
 
   .fw400 {

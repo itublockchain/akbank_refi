@@ -19,10 +19,13 @@ const Navbar = () => {
     <div className={styles.wrapper}>
       <div className={styles.navbar}>
         <div className={styles.logo}>
+          <div className={styles.projectName}>
+            <div>PROOF of</div>
+            <div>LABOR</div>
+          </div>
           <Link to="/">
             <img src={LOGO2} alt="logo"></img>
           </Link>
-          <div>Ağaç Dikemedik Ama</div>
         </div>
 
         <div className={styles.buttons}>
@@ -44,7 +47,7 @@ const Navbar = () => {
               <Button
                 height="40px"
                 onClick={connect}
-                color={theme === "light" ? "akbank" : "akbank"}
+                color={"landing"}
                 className={clsnm(styles.accountButton)}
               >
                 {"Connect Wallet"}

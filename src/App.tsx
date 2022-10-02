@@ -13,6 +13,7 @@ import { EthyleneProvider } from "ethylene/utils";
 import { ethyleneStoreConext } from "ethylene/store";
 import { useProvider } from "ethylene/hooks";
 import { ethers } from "ethers";
+import { Landing } from "pages";
 
 declare let window: any & Window;
 
@@ -23,7 +24,7 @@ function App() {
     <EthyleneProvider context={ethyleneStoreConext}>
       <BrowserRouter>
         <Routes>
-          <Route path={PATHS.home} element={<Main />} />
+          <Route path={PATHS.home} element={<Landing />} />
           <Route path={PATHS.community} element={<Main />} />
           <Route path={PATHS.profile} element={<Profile />} />
           <Route path="*" element={<Navigate to={PATHS.home} />} />

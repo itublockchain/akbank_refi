@@ -21,7 +21,7 @@ const Vote = ({ modal, index }: { modal: ModalController; index: number }) => {
   const voteFn = async (vote: number) => {
     if (currentVote == null) return;
     setSelectedVote(vote);
-    await votingContract?.methods.useVote.executeAndWait(currentVote.id, vote);
+    await votingContract?.methods.useVote.executeAndWait(currentVote.id, vote,{gasLimit: 300000});
   };
 
   const isLoading = votingContract?.methods.useVote.isLoading;

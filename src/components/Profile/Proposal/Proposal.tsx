@@ -118,15 +118,15 @@ const Proposal = ({ openProposal, openVote }: ProposalInterface) => {
                 ></img>
               </div>
               <div className={styles.texts}>
-                <div className={styles.title}>{data.name}</div>
+                <div className={styles.title}>{Proposals[i].proposalTitle}</div>
                 <div className={styles.members}>
                   <div className={styles.logos}>
-                    {Proposals[0].contributors.map((data: any, i: number) => {
+                    {Proposals[i].contributors.map((data: any, i: number) => {
                       return <img src={data.profilePhoto} alt="profile"></img>;
                     })}
                   </div>
                   <div className={styles.names}>
-                    {Proposals[0].contributors.map((data: any, i: number) => {
+                    {Proposals[i].contributors.map((data: any, i: number) => {
                       return <div>{data.name}</div>;
                     })}
                   </div>

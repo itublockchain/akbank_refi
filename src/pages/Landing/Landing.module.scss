@@ -1,0 +1,85 @@
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+    a{
+        text-decoration: none;
+    }
+
+    .firstBlood {
+        display: flex;
+        width: 100%;
+        justify-content: center;
+        border-top: 0.15px solid black;
+        margin-bottom: 200px;
+        padding-top: 50px;
+        flex-direction: column;
+        align-items: center;
+        position: relative;
+
+        .underText {
+            margin-bottom: 25px;
+            font-size: 24px;
+            font-weight: 100;
+            opacity: 0.7;
+        }
+
+        button {
+            // position: absolute;
+            // bottom: -12px;
+            // top: 50px;
+            // right: 120px;
+            border-radius: 44px;
+        }
+
+        img {
+            width: 1000px;
+        }
+    }
+
+    .secondBlood {
+        display: flex;
+        width: 100%;
+        margin-top: 100px;
+        margin-bottom: 150px;
+        justify-content: space-between;
+
+        .text {
+            max-width: 700px;
+            text-align: right;
+            font: normal normal 200 26px/43px Apple SD Gothic Neo;
+            margin-right: 120px;
+        }
+
+        img {
+            width: 600px;
+        }
+    }
+
+    .intervalText {
+        font: normal normal 80px/163px Apple SD Gothic Neo;
+        text-align: center;
+    }
+
+    .thirtBlood {
+        display: flex;
+        width: 100%;
+        margin-bottom: 150px;
+        justify-content: space-between;
+        margin-top: 150px;
+
+        .text {
+            max-width: 700px;
+            text-align: left;
+            font: normal normal 200 26px/43px Apple SD Gothic Neo;
+            margin-left: 120px;
+            margin-top: 150px;
+        }
+
+        img {
+            width: 500px;
+        }
+    }
+
+}
