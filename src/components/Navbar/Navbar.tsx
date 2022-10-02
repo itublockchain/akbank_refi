@@ -19,13 +19,13 @@ const Navbar = () => {
     <div className={styles.wrapper}>
       <div className={styles.navbar}>
         <div className={styles.logo}>
-          <div className={styles.projectName}>
-            <div>PROOF of</div>
-            <div>LABOR</div>
-          </div>
           <Link to="/">
             <img src={LOGO2} alt="logo"></img>
           </Link>
+          <div className={styles.projectName}>
+            <div>AĞAÇ</div>
+            <div>DİKEMEDİK AMA</div>
+          </div>
         </div>
 
         <div className={styles.buttons}>

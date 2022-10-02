@@ -14,7 +14,7 @@ const Landing = () => {
         <img src={L1}></img>
 
         <div className={styles.underText}>
-          Bla bla bla bla bla bla bla bla bla
+          AĞAÇ DİKEMEDİK AMA
         </div>
         <Link to="/community">
           <Button
@@ -38,7 +38,7 @@ const Landing = () => {
           yaratamamaktadır.
         </div>
       </div>
-      <div className={styles.intervalText}>BLA BLA BLA</div>
+      <div className={styles.intervalText}>OTONOM, MERKEZSİZ</div>
       <div className={styles.thirtBlood}>
         <div className={styles.text}>
           Toplulukları, üyelerin harcadığı emeklere göre katmanlara ayıran bir
