@@ -1,9 +1,11 @@
 import { Button } from "ui";
 import styles from "./Needs.module.scss";
-import { Proposals } from "constants/Proposals";
 import { Projects } from "constants/Projects";
 
-const Needs = () => {
+interface NeedsInterface {
+  openProject: () => void;
+}
+const Needs = ({ openProject }: NeedsInterface) => {
   return (
     <div className={styles.wrapper}>
       <div className={styles.title}>
@@ -14,6 +16,7 @@ const Needs = () => {
           color="member"
           width="160px"
           height="42px"
+          onClick={() => openProject()}
         >
           Add Project
         </Button>
@@ -21,10 +24,9 @@ const Needs = () => {
       {Projects.map((data: any, i: number) => {
         return (
           <div className={styles.proposal}>
-            <div className={styles.ticket}>#{data.ticket}</div>
             <div className={styles.infos}>
               <div className={styles.proposalImage}>
-                <img src={data.image}></img>
+                <img src={data.image} alt="proposal"></img>
               </div>
               <div className={styles.texts}>
                 <div className={styles.title}>{data.title}</div>
@@ -33,6 +35,7 @@ const Needs = () => {
                 </div>
               </div>
             </div>
+            <div className={styles.ticket}>#{data.ticket}</div>
           </div>
         );
       })}

@@ -1,7 +1,7 @@
 import { Navbar } from "components";
 import styles from "./Profile.module.scss";
 import HeaderImage from "assets/header.jpeg";
-import HatunImage from "assets/hatun.png";
+import HatunImage from "assets/ulas.png";
 import ItuBlockChainImage from "assets/ITUBCLogo.jpeg";
 import { clsnm } from "utils/clsnm";
 import { useState } from "react";
@@ -43,9 +43,9 @@ const Banner = ({ imgUrl, teamName = "ITU Blockchain" }: BannerProps) => {
       </div>
       <div className={styles.content}>
         <h1 className={styles.name}>
-          Hatun {teamName ? `- ${teamName}` : null}
+          Ulas {teamName ? `- ${teamName}` : null}
         </h1>
-        <p className={styles.joinDate}>1 December, 2022</p>
+        <p className={styles.joinDate}>2 December, 2022</p>
       </div>
       <div className={styles.tabs}>
         <div

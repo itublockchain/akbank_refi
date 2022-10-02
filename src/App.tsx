@@ -9,19 +9,23 @@ import {
   useLocation,
 } from "react-router-dom";
 import { useEffect } from "react";
+import { EthyleneProvider } from "ethylene/utils";
+import { ethyleneStoreConext } from "ethylene/store";
 
 function App() {
   useInitialTheme();
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path={PATHS.home} element={<Main />} />
-        <Route path={PATHS.community} element={<Main />} />
-        <Route path={PATHS.profile} element={<Profile />} />
-        <Route path="*" element={<Navigate to={PATHS.home} />} />
-      </Routes>
-      <NavigationAnimator />
-    </BrowserRouter>
+    <EthyleneProvider context={ethyleneStoreConext}>
+      <BrowserRouter>
+        <Routes>
+          <Route path={PATHS.home} element={<Main />} />
+          <Route path={PATHS.community} element={<Main />} />
+          <Route path={PATHS.profile} element={<Profile />} />
+          <Route path="*" element={<Navigate to={PATHS.home} />} />
+        </Routes>
+        <NavigationAnimator />
+      </BrowserRouter>
+    </EthyleneProvider>
   );
 }
 

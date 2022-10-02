@@ -2,7 +2,17 @@ import { Button } from "ui";
 import styles from "./Proposal.module.scss";
 import { Proposals } from "constants/Proposals";
 
-const Proposal = () => {
+interface ProposalInterface {
+  openProposal: () => void;
+  openVote: () => void;
+  setWhichProposal: any;
+}
+
+const Proposal = ({
+  openProposal,
+  openVote,
+  setWhichProposal,
+}: ProposalInterface) => {
   return (
     <div className={styles.wrapper}>
       <div className={styles.title}>
@@ -13,13 +23,14 @@ const Proposal = () => {
           color="member"
           width="160px"
           height="42px"
+          onClick={() => openProposal()}
         >
           Add Proposal
         </Button>
       </div>
       {Proposals.map((data: any, i: number) => {
         return (
-          <div className={styles.proposal}>
+          <div className={styles.proposal} key={i}>
             <div className={styles.infos}>
               <div className={styles.proposalImage}>
                 <img src={data.proposalLogo}></img>
@@ -46,6 +57,10 @@ const Proposal = () => {
               color="red"
               width="153px"
               height="42px"
+              onClick={() => {
+                openVote();
+                setWhichProposal(i);
+              }}
             >
               Vote
             </Button>

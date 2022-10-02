@@ -10,6 +10,8 @@ import { Bazaar } from "components/Profile/Bazaar/Bazaar";
 import { Sponsorship } from "components/Profile/Sponsorship/Sponsorship";
 import { useState } from "react";
 import { Proposals } from "constants/Proposals";
+import { useModal } from "hooks/useModal";
+import { Vote, AddProject, AddProposal } from "components";
 
 enum WhichPage {
   "PROJECTS",
@@ -20,17 +22,21 @@ enum WhichPage {
 
 const Profile = () => {
   const [whichPage, setWhichPage] = useState<WhichPage>(WhichPage.PROPOSALS);
+  const voteModal = useModal();
+  const addProposalModal = useModal();
+  const addProjectModal = useModal();
+  const [whichProposal, setWhichProposal] = useState(0);
   return (
     <div className={styles.wrapper}>
       <div className={styles.header}>
         <img src={HEADER}></img>
       </div>
-      <div className={styles.profilePhoto}>
-        <img src={LOGO}></img>
-      </div>
 
       <div className={styles.communityInfos}>
         <div className={styles.members}>
+          <div className={styles.profilePhoto}>
+            <img src={LOGO}></img>
+          </div>
           <div className={styles.communityName}>ITU Blockchain</div>
           <div className={styles.memberCount}>2000+ member</div>
 
@@ -104,9 +110,13 @@ const Profile = () => {
           </div>
           <div className={styles.boxs}>
             {WhichPage.PROPOSALS === whichPage ? (
-              <Proposal />
+              <Proposal
+                openProposal={addProposalModal.open}
+                openVote={voteModal.open}
+                setWhichProposal={setWhichProposal}
+              />
             ) : WhichPage.PROJECTS === whichPage ? (
-              <Needs />
+              <Needs openProject={addProjectModal.open} />
             ) : WhichPage.BAZAAR === whichPage ? (
               <Bazaar />
             ) : (
@@ -115,6 +125,9 @@ const Profile = () => {
           </div>
         </div>
       </div>
+      <Vote modal={voteModal} index={whichProposal} />
+      <AddProject modal={addProjectModal} />
+      <AddProposal modal={addProposalModal} />
     </div>
   );
 };

@@ -1,194 +1,194 @@
 .wrapper {
+  position: relative;
+
+  .header {
     position: relative;
+    img {
+      width: 100%;
+    }
+  }
 
-    .header {
+  .profilePhoto {
+    position: absolute;
+    left: 90px;
+    top: -130px;
+
+    img {
+      border: 2px solid black;
+      width: 120px;
+      border-radius: 50%;
+    }
+  }
+
+  .communityInfos {
+    display: flex;
+    justify-content: center;
+    margin-right: auto;
+    margin-left: auto;
+    gap: 50px;
+    margin-top: 40px;
+
+    .members {
+      position: relative;
+      width: 300px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      .communityName {
+        font-size: 24px;
+        font-weight: 600;
+      }
+
+      .memberCount {
+        font-size: 14px;
+        color: #b19cd7;
+        margin-bottom: 20px;
+      }
+
+      .calender {
+        margin-top: 25px;
+
         img {
-            width: 100%;
+          width: 230px;
         }
+      }
     }
 
-    .profilePhoto {
-        position: absolute;
-        left: 90px;
-        top: 125px;
+    .proposals {
+      width: 800px;
+      height: 400px;
 
-        img {
-            border: 2px solid black;
-            width: 120px;
-            border-radius: 50%;
-        }
-    }
+      .whichPage {
+        padding-left: 10px;
+        border-bottom: 1px solid #707070;
 
-    .communityInfos {
         display: flex;
-        // justify-content: space-between;
-        margin-right: 100px;
-        gap: 50px;
-        margin-top: 40px;
+        align-items: center;
 
-        .members {
-            width: 300px;
+        .pageButton {
+          border-top-left-radius: 10px;
+          border-top-right-radius: 10px;
+          border: 1px solid #707070;
+          background: #f0e8ff 0% 0% no-repeat padding-box;
+          height: 50px;
+          width: 120px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font: normal normal 300 20px/43px Apple SD Gothic Neo;
+          font-weight: 400;
+          cursor: pointer;
+        }
+
+        .notPageButton {
+          border-top-left-radius: 10px;
+          border-top-right-radius: 10px;
+          border: 1px solid transparent;
+          background: transparent 0% 0% no-repeat padding-box;
+          height: 50px;
+          width: 120px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font: normal normal 300 20px/43px Apple SD Gothic Neo;
+          font-weight: 400;
+          cursor: pointer;
+
+          &:hover {
+            border: 1px solid #c5c5c5;
+            background: #f9f7fe 0% 0% no-repeat padding-box;
+          }
+        }
+      }
+
+      .brief {
+        margin-bottom: 20px;
+        margin-top: 10px;
+      }
+
+      .boxs {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        border: 1px solid #211b51;
+        border-radius: 49px;
+
+        .needs {
+          border: 1px solid #211b51;
+          border-radius: 49px;
+          max-width: 380px;
+          width: 100%;
+
+          .title {
+            margin-top: 10px;
+            margin-left: 48px;
             display: flex;
-            flex-direction: column;
             align-items: center;
+            font: normal normal bold 36px/46px Apple SD Gothic Neo;
 
-            .communityName {
-                font-size: 24px;
-                font-weight: 600;
+            .dot {
+              margin-right: 5px;
+              width: 20px;
+              height: 20px;
+              border-radius: 50%;
+              background-color: #a6d7d9;
             }
-
-            .memberCount {
-                font-size: 14px;
-                color: #b19cd7;
-                margin-bottom: 20px;
-            }
-
-            .calender {
-                margin-top: 25px;
-
-                img {
-                    width: 230px;
-                }
-            }
+          }
         }
 
         .proposals {
-            width: 800px;
-            height: 400px;
+          border: 1px solid #211b51;
+          border-radius: 49px;
+          max-width: 380px;
+          width: 100%;
 
-            .whichPage {
-                padding-left: 10px;
-                border-bottom: 1px solid #707070;
+          .title {
+            margin-top: 10px;
+            margin-left: 48px;
+            display: flex;
+            align-items: center;
+            font: normal normal bold 36px/46px Apple SD Gothic Neo;
 
-                display: flex;
-                align-items: center;
-
-                .pageButton {
-                    border-top-left-radius: 10px;
-                    border-top-right-radius: 10px;
-                    border: 1px solid #707070;
-                    background: #F0E8FF 0% 0% no-repeat padding-box;
-                    height: 50px;
-                    width: 120px;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    font: normal normal 300 20px/43px Apple SD Gothic Neo;
-                    font-weight: 400;
-                    cursor: pointer;
-                }
-
-                .notPageButton {
-                    border-top-left-radius: 10px;
-                    border-top-right-radius: 10px;
-                    border: 1px solid transparent;
-                    background: transparent 0% 0% no-repeat padding-box;
-                    height: 50px;
-                    width: 120px;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    font: normal normal 300 20px/43px Apple SD Gothic Neo;
-                    font-weight: 400;
-                    cursor: pointer;
-
-                    &:hover {
-                        border: 1px solid #c5c5c5;
-                        background: #f9f7fe 0% 0% no-repeat padding-box;
-                    }
-                }
+            .dot {
+              margin-right: 5px;
+              width: 20px;
+              height: 20px;
+              border-radius: 50%;
+              background-color: #a6d7d9;
             }
-
-            .brief {
-                margin-bottom: 20px;
-                margin-top: 10px;
-            }
-
-            .boxs {
-                display: flex;
-                justify-content: space-between;
-                width: 100%;
-                border: 1px solid #211B51;
-                border-radius: 49px;
-
-                .needs {
-                    border: 1px solid #211B51;
-                    border-radius: 49px;
-                    max-width: 380px;
-                    width: 100%;
-
-                    .title {
-                        margin-top: 10px;
-                        margin-left: 48px;
-                        display: flex;
-                        align-items: center;
-                        font: normal normal bold 36px/46px Apple SD Gothic Neo;
-
-                        .dot {
-                            margin-right: 5px;
-                            width: 20px;
-                            height: 20px;
-                            border-radius: 50%;
-                            background-color: #A6D7D9;
-                        }
-                    }
-                }
-
-                .proposals {
-                    border: 1px solid #211B51;
-                    border-radius: 49px;
-                    max-width: 380px;
-                    width: 100%;
-
-                    .title {
-                        margin-top: 10px;
-                        margin-left: 48px;
-                        display: flex;
-                        align-items: center;
-                        font: normal normal bold 36px/46px Apple SD Gothic Neo;
-
-                        .dot {
-                            margin-right: 5px;
-                            width: 20px;
-                            height: 20px;
-                            border-radius: 50%;
-                            background-color: #A6D7D9;
-                        }
-                    }
-                }
-            }
-
-
+          }
         }
-
-        .addProposal {
-            width: 100px;
-            background-color: blue;
-            height: 400px;
-        }
+      }
     }
+
+    .addProposal {
+      width: 100px;
+      background-color: blue;
+      height: 400px;
+    }
+  }
 }
 
-
 .memberWrapper {
-    display: flex;
-    margin: 5px 0px;
+  display: flex;
+  margin: 5px 0px;
 
-    .photo {
-        img {
-            width: 40px;
-            margin-right: 5px;
-        }
+  .photo {
+    img {
+      width: 40px;
+      margin-right: 5px;
+    }
+  }
+
+  .infos {
+    .name {
+      font-weight: 700;
     }
 
-    .infos {
-        .name {
-            font-weight: 700;
-        }
-
-        .role {
-            font-weight: 400;
-            font-size: 12px;
-        }
+    .role {
+      font-weight: 400;
+      font-size: 12px;
     }
+  }
 }
