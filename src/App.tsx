@@ -11,9 +11,14 @@ import {
 import { useEffect } from "react";
 import { EthyleneProvider } from "ethylene/utils";
 import { ethyleneStoreConext } from "ethylene/store";
+import { useProvider } from "ethylene/hooks";
+import { ethers } from "ethers";
+
+declare let window: any & Window;
 
 function App() {
   useInitialTheme();
+
   return (
     <EthyleneProvider context={ethyleneStoreConext}>
       <BrowserRouter>
@@ -31,6 +36,13 @@ function App() {
 
 const NavigationAnimator = () => {
   const { pathname } = useLocation();
+  const { setProvider } = useProvider();
+
+  useEffect(() => {
+    if (window.ethereum) {
+      setProvider(new ethers.providers.Web3Provider(window.ethereum, "any"));
+    }
+  }, []);
 
   useEffect(() => {
     document.body.animate([{ opacity: 0.8 }, { opacity: 1 }], {

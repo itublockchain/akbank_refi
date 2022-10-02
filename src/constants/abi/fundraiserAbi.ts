@@ -136,6 +136,64 @@ export const fundraiserAbi = [
   {
     inputs: [
       {
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
+    ],
+    name: "IdToFundraise",
+    outputs: [
+      {
+        internalType: "string",
+        name: "name",
+        type: "string",
+      },
+      {
+        internalType: "uint48",
+        name: "startTime",
+        type: "uint48",
+      },
+      {
+        internalType: "uint48",
+        name: "finishTime",
+        type: "uint48",
+      },
+      {
+        internalType: "address",
+        name: "fundHolder",
+        type: "address",
+      },
+      {
+        internalType: "uint256",
+        name: "pricePerBasis",
+        type: "uint256",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
+    ],
+    name: "IdToTotalSupply",
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
         internalType: "address",
         name: "account",
         type: "address",
@@ -189,7 +247,7 @@ export const fundraiserAbi = [
         type: "uint256",
       },
     ],
-    name: "helpFund",
+    name: "fund",
     outputs: [],
     stateMutability: "payable",
     type: "function",
@@ -304,6 +362,11 @@ export const fundraiserAbi = [
   },
   {
     inputs: [
+      {
+        internalType: "string",
+        name: "name",
+        type: "string",
+      },
       {
         internalType: "uint48",
         name: "startTime",

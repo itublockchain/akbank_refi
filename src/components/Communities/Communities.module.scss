@@ -1,0 +1,38 @@
+.wrapper {
+    display: flex;
+    gap: 50px;
+    width: 100%;
+    margin-top: 20px;
+
+    .community {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 250px;
+        padding: 10px;
+        position: relative;
+
+        img {
+            width: 100px;
+            margin-bottom: 20px;
+            border-radius: 50%;
+        }
+
+        .title {
+            font: normal normal bold 28px/52px Apple SD Gothic Neo;
+        }
+
+        .cv {
+            position: absolute;
+            margin-top: 10px;
+            bottom: -80px;
+            left: 30px;
+
+            img {
+                width: 50px;
+            }
+        }
+
+    }
+
+}

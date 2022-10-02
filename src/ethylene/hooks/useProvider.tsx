@@ -1,5 +1,4 @@
 import { Web3Provider } from "@ethersproject/providers";
-import { useDispatch } from "react-redux";
 import { useEthyleneDispatch, useTypedSelector } from "../store";
 import { setProvider as setProviderAction } from "../store/reducers/accountReducer";
 

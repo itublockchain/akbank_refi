@@ -9,6 +9,9 @@ import {
   MdArticle,
 } from "react-icons/md";
 import { TiSocialTwitter } from "react-icons/ti";
+import { useContract, useProvider } from "ethylene/hooks";
+import { ADDRESSES } from "constants/Address";
+import { votingAbi } from "constants/abi/votingAbi";
 
 enum SUBJECT {
   "Write Article",
@@ -20,6 +23,17 @@ enum SUBJECT {
 
 const AddProposal = ({ modal }: { modal: ModalController }) => {
   const [subject, setSubject] = useState<SUBJECT>(SUBJECT.Design);
+  const { provider } = useProvider();
+
+  const votingContract = useContract({
+    address: ADDRESSES.VOTING,
+    abi: votingAbi,
+    provider: provider,
+  });
+
+  const [content, setContent] = useState("");
+  const [name, setName] = useState("");
+
   return (
     <Modal isOpen={modal.isOpen} close={modal.close} className={styles.wrapper}>
       <div className={styles.title}>Create Proposal</div>
@@ -80,13 +94,32 @@ const AddProposal = ({ modal }: { modal: ModalController }) => {
         </div>
       </div>
       <div className={styles.inputs}>
-        <input placeholder="Give a name to your project" />
-        <input placeholder="Description" />
+        <input
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          placeholder="Give a name to your project"
+        />
+        <input
+          value={content}
+          onChange={(e) => setContent(e.target.value)}
+          placeholder="Content"
+        />
         <input placeholder="Links" />
       </div>
 
       <div className={styles.buttons}>
         <Button
+          loading={votingContract?.methods.startVote.isLoading}
+          onClick={async () => {
+            try {
+              await votingContract?.methods.startVote.executeAndWait(
+                content,
+                name
+              );
+              modal.close();
+            } catch {}
+          }}
+          disabled={name.trim() === "" || content.trim() === ""}
           height="40px"
           // onClick={connect}
           color={"member"}

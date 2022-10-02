@@ -49,6 +49,37 @@ export const votingAbi = [
     anonymous: false,
     inputs: [
       {
+        indexed: false,
+        internalType: "address",
+        name: "creator",
+        type: "address",
+      },
+      {
+        indexed: false,
+        internalType: "uint256",
+        name: "startTime",
+        type: "uint256",
+      },
+      {
+        indexed: false,
+        internalType: "string",
+        name: "content",
+        type: "string",
+      },
+      {
+        indexed: false,
+        internalType: "string",
+        name: "name",
+        type: "string",
+      },
+    ],
+    name: "ProposalCreated",
+    type: "event",
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
         indexed: true,
         internalType: "address",
         name: "from",
@@ -177,6 +208,65 @@ export const votingAbi = [
   {
     inputs: [
       {
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
+    ],
+    name: "idToProposal",
+    outputs: [
+      {
+        internalType: "address",
+        name: "creator",
+        type: "address",
+      },
+      {
+        internalType: "uint88",
+        name: "startTime",
+        type: "uint88",
+      },
+      {
+        internalType: "bool",
+        name: "settled",
+        type: "bool",
+      },
+      {
+        internalType: "string",
+        name: "content",
+        type: "string",
+      },
+      {
+        internalType: "string",
+        name: "name",
+        type: "string",
+      },
+      {
+        internalType: "uint64",
+        name: "denyCount",
+        type: "uint64",
+      },
+      {
+        internalType: "uint64",
+        name: "lowCount",
+        type: "uint64",
+      },
+      {
+        internalType: "uint64",
+        name: "mediumCount",
+        type: "uint64",
+      },
+      {
+        internalType: "uint64",
+        name: "highCount",
+        type: "uint64",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
         internalType: "address",
         name: "spender",
         type: "address",
@@ -215,7 +305,7 @@ export const votingAbi = [
     inputs: [
       {
         internalType: "uint256",
-        name: "labourId",
+        name: "proposalId",
         type: "uint256",
       },
     ],
@@ -229,6 +319,11 @@ export const votingAbi = [
       {
         internalType: "string",
         name: "content",
+        type: "string",
+      },
+      {
+        internalType: "string",
+        name: "_name",
         type: "string",
       },
     ],
@@ -320,11 +415,11 @@ export const votingAbi = [
     inputs: [
       {
         internalType: "uint256",
-        name: "labourId",
+        name: "proposalId",
         type: "uint256",
       },
       {
-        internalType: "enum Voting.Vote",
+        internalType: "enum ProposalVoting.Vote",
         name: "vote",
         type: "uint8",
       },
@@ -332,6 +427,30 @@ export const votingAbi = [
     name: "useVote",
     outputs: [],
     stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "",
+        type: "address",
+      },
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
+    ],
+    name: "voted",
+    outputs: [
+      {
+        internalType: "bool",
+        name: "",
+        type: "bool",
+      },
+    ],
+    stateMutability: "view",
     type: "function",
   },
 ];

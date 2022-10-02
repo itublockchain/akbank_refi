@@ -108,8 +108,28 @@
 }
 
 .data {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  display: flex;
+  // grid-template-columns: 1fr 1fr;
+  flex-direction: column;
+  width: 100%;
+
+  .line {
+    background-color: black;
+    height: 1px;
+    margin-top: 80px;
+  }
+
+  .x{
+    font-size: 32px;
+    margin-top: 5px;
+  }
+
+  .myProposals {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+  }
 }
 
 .contributions {
@@ -136,7 +156,13 @@
     margin-right: 12px;
   }
 
-  & .proposalText {
-    font-size: 18px;
+  & .proposalText1 {
+    font-size: 20px;
+    font-weight: 500;
+  }
+
+  & .proposalText2 {
+    font-size: 16px;
+    min-width: 300px;
   }
 }
