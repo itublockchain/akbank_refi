@@ -11,6 +11,11 @@ import { ADDRESSES } from "constants/Address";
 import { votingAbi } from "constants/abi/votingAbi";
 import { useEffect } from "react";
 import { useAddress } from "ethylene/hooks/useAddress";
+import { Vote } from "classes/Vote";
+import { useDispatch } from "react-redux";
+import { setCurrentVote, setProposals } from "store/slicers/proposals";
+import { useTypedSelector } from "store";
+import { BigNumber } from "ethers";
 
 interface ProposalInterface {
   openProposal: () => void;
@@ -28,21 +33,52 @@ const Proposal = ({ openProposal, openVote }: ProposalInterface) => {
     abi: votingAbi,
     provider: provider,
   });
+  const dispatch = useDispatch();
+  const proposals = useTypedSelector((state) => state.proposals.proposals);
+  const refetchKey = useTypedSelector((state) => state.proposals.refetchKey);
 
   useEffect(() => {
-    if (votingContract == null || auth == null || address == null) {
-      return;
-    }
-    const fetch = async () => {};
-    fetch();
-  }, [auth, address]);
+    if (!provider) return;
+    const url = `https://api-testnet.snowtrace.io/api?module=logs&action=getLogs&address=${ADDRESSES.VOTING}&fromBlock=7651692&apikey=Q8GY22BMJ6H622JNVNH4N1U8RYC37X7TEF`;
+
+    fetch(url).then((json) => {
+      return json.json().then((res) => {
+        if (Array.isArray(res.result)) {
+          let id = 0;
+          const promiseArr = res.result.map(
+            async (item: any, index: number) => {
+              const proposal =
+                await votingContract?.methods.idToProposal.execute(index);
+
+              if (BigNumber.from(proposal[0]).eq(BigNumber.from(0))) {
+                return null;
+              }
+              const content = proposal[3];
+              const name = proposal[4];
+              const voted = await votingContract?.methods.voted.execute(
+                address,
+                id
+              );
+              const vote = new Vote(id, name, content, voted);
+              id++;
+              return vote;
+            }
+          );
+          Promise.all(promiseArr).then((res) => {
+            dispatch(
+              setProposals(res.filter((item) => item != null).reverse())
+            );
+          });
+        }
+      });
+    });
+  }, [provider, refetchKey]);
 
   useEffect(() => {
-    if (votingContract == null) {
+    if (votingContract == null || address == null) {
       return;
     }
-    console.log(votingContract.ethersContract.filters.ProposalCreated());
-  }, [votingContract]);
+  }, [votingContract, address]);
 
   return (
     <div className={styles.wrapper}>
@@ -66,23 +102,31 @@ const Proposal = ({ openProposal, openVote }: ProposalInterface) => {
           {!auth ? "Connect wallet" : "Add proposal"}
         </Button>
       </div>
-      {Proposals.map((data: any, i: number) => {
+      {proposals?.length === 0 && (
+        <div style={{ textAlign: "center", marginTop: "1rem" }}>
+          No active proposals
+        </div>
+      )}
+      {proposals.map((data, i: number) => {
         return (
           <div key={i} className={styles.proposal}>
             <div className={styles.infos}>
               <div className={styles.proposalImage}>
-                <img src={data.proposalLogo} alt="logo"></img>
+                <img
+                  src={Proposals[i]?.proposalLogo ?? Proposals[0].proposalLogo}
+                  alt="logo"
+                ></img>
               </div>
               <div className={styles.texts}>
-                <div className={styles.title}>{data.proposalTitle}</div>
+                <div className={styles.title}>{data.name}</div>
                 <div className={styles.members}>
                   <div className={styles.logos}>
-                    {data.contributors.map((data: any, i: number) => {
+                    {Proposals[0].contributors.map((data: any, i: number) => {
                       return <img src={data.profilePhoto} alt="profile"></img>;
                     })}
                   </div>
                   <div className={styles.names}>
-                    {data.contributors.map((data: any, i: number) => {
+                    {Proposals[0].contributors.map((data: any, i: number) => {
                       return <div>{data.name}</div>;
                     })}
                   </div>
@@ -96,9 +140,12 @@ const Proposal = ({ openProposal, openVote }: ProposalInterface) => {
                 color="red"
                 width="153px"
                 height="42px"
-                onClick={() => openVote()}
+                onClick={() => {
+                  openVote();
+                  dispatch(setCurrentVote(data));
+                }}
               >
-                Vote
+                {data.isVoted ? "Voted" : "Vote"}
               </Button>
             )}
           </div>

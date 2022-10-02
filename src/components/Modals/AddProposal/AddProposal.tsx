@@ -12,6 +12,9 @@ import { TiSocialTwitter } from "react-icons/ti";
 import { useContract, useProvider } from "ethylene/hooks";
 import { ADDRESSES } from "constants/Address";
 import { votingAbi } from "constants/abi/votingAbi";
+import { useTypedSelector } from "store";
+import { setRefetchKey } from "store/slicers/proposals";
+import { useDispatch } from "react-redux";
 
 enum SUBJECT {
   "Write Article",
@@ -24,6 +27,8 @@ enum SUBJECT {
 const AddProposal = ({ modal }: { modal: ModalController }) => {
   const [subject, setSubject] = useState<SUBJECT>(SUBJECT.Design);
   const { provider } = useProvider();
+  const refetchKey = useTypedSelector((state) => state.proposals.refetchKey);
+  const dispatch = useDispatch();
 
   const votingContract = useContract({
     address: ADDRESSES.VOTING,
@@ -116,6 +121,9 @@ const AddProposal = ({ modal }: { modal: ModalController }) => {
                 content,
                 name
               );
+              setTimeout(() => {
+                dispatch(setRefetchKey(refetchKey + 1));
+              }, 2000);
               modal.close();
             } catch {}
           }}
