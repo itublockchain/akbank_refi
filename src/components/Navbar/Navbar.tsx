@@ -1,55 +1,51 @@
 import styles from "./Navbar.module.scss";
-import { IoMdMoon, IoMdSunny } from "react-icons/io";
 import { useTheme } from "hooks/useTheme";
 import LOGO2 from "assets/logo.svg";
 import { Button } from "ui";
 import { formatAddress } from "utils/formatAddress";
 import { clsnm } from "utils/clsnm";
-import useSetAccount from "hooks/useSetAccount";
-import { useAccount } from "hooks/useAccount";
-import PROFILE from "assets/alim.png";
-import account from "store/slicers/account";
+import PROFILE from "assets/ulas.png";
+import { Link } from "react-router-dom";
+import { useAuth, useConnection } from "ethylene/hooks";
+import { useAddress } from "ethylene/hooks/useAddress";
 
 const Navbar = () => {
-  const { theme, toggleTheme } = useTheme();
-  const { requestAccounts } = useSetAccount();
-  const { auth, address } = useAccount();
+  const { theme } = useTheme();
+  const { connect } = useConnection();
+  const address = useAddress();
+  const auth = useAuth();
+
   return (
     <div className={styles.wrapper}>
       <div className={styles.navbar}>
         <div className={styles.logo}>
-          <a href="http://localhost:3000">
-            <img src={LOGO2}></img>
-          </a>
+          <Link to="/">
+            <img src={LOGO2} alt="logo"></img>
+          </Link>
           <div>Ağaç Dikemedik Ama</div>
         </div>
 
         <div className={styles.buttons}>
           {auth ? (
             <div className={styles.profile}>
-              <a
-                href="http://localhost:3000/profile"
+              <Link
+                to="/profile"
                 // target="_blank"
               >
-                <img src={PROFILE}></img>
+                <img src={PROFILE} alt="profile"></img>
                 <div className={styles.info}>
-                  <div>Alim</div>
+                  <div>Ulas</div>
                   <div>{address ? formatAddress(address) : "0x..."}</div>
                 </div>
-              </a>
+              </Link>
             </div>
           ) : (
             <div className={styles.connectButton}>
               <Button
                 height="40px"
-                onClick={() => {
-                  if (!auth) requestAccounts();
-                }}
+                onClick={connect}
                 color={theme === "light" ? "akbank" : "akbank"}
-                className={clsnm(
-                  // !mobile ? styles.themeChanger : styles.themeChangerMobile,
-                  styles.accountButton
-                )}
+                className={clsnm(styles.accountButton)}
               >
                 {"Connect Wallet"}
               </Button>
