@@ -34,7 +34,7 @@ contract ProposalVoting is ERC20 {
     uint256 constant MEDIUM_MINT = 5;
     uint256 constant HIGH_MINT = 8;
 
-    uint256 private _proposalId;
+    uint256 public proposalId;
 
     IMembership membership;
 
@@ -48,6 +48,17 @@ contract ProposalVoting is ERC20 {
         string name
     );
 
+    event ProposalSettled(
+        uint256 proposalId,
+        Vote result
+    );
+
+    event Voted(
+        address voter,
+        uint256 proposalId,
+        Vote vote
+    );
+
     constructor(string memory name, string memory symbol, address _membershipAddress) ERC20(name, symbol) {
         membership = IMembership(_membershipAddress);
     }
@@ -57,7 +68,7 @@ contract ProposalVoting is ERC20 {
         _;
     }
 
-    function startVote(string calldata content, string calldata _name) external onlyMember {
+    function startVote(string calldata content, string calldata _name) external onlyMember returns (uint256) {
         Proposal memory proposal = Proposal(
             msg.sender,
             uint88(block.timestamp),
@@ -70,13 +81,16 @@ contract ProposalVoting is ERC20 {
             0
         );
 
-        idToProposal[_proposalId] = proposal;
-        unchecked { _proposalId++; }
+        uint256 newId = proposalId;
+
+        idToProposal[newId] = proposal;
+        unchecked { proposalId++; }
         emit ProposalCreated(msg.sender, block.timestamp, content, _name);
+        return newId;
     }
 
-    function settleVote(uint256 proposalId) external onlyMember {
-        Proposal memory proposal = idToProposal[proposalId];
+    function settleVote(uint256 _proposalId) external onlyMember {
+        Proposal memory proposal = idToProposal[_proposalId];
         require(proposal.startTime + VOTING_LENGTH >= block.timestamp, "voting in progress");
         require(!proposal.settled, "voting already settled");
         Vote winningVote = calculateWinningVote(proposal);
@@ -89,12 +103,14 @@ contract ProposalVoting is ERC20 {
             _mint(proposal.creator, HIGH_MINT);
         }
 
-        idToProposal[proposalId].settled = true;
+        idToProposal[_proposalId].settled = true;
+        emit ProposalSettled(_proposalId, winningVote);
     }
 
-    function useVote(uint256 proposalId, Vote vote) external onlyMember {
-        Proposal storage proposal = idToProposal[proposalId];
-        require(!voted[msg.sender][proposalId], "already voted");
+    function useVote(uint256 _proposalId, Vote vote) external onlyMember {
+        Proposal storage proposal = idToProposal[_proposalId];
+        require(!voted[msg.sender][_proposalId], "already voted");
+        
         if (vote == Vote.DENY) {
             unchecked { proposal.denyCount++; }
         } else if (vote == Vote.LOW) {
@@ -105,7 +121,8 @@ contract ProposalVoting is ERC20 {
             unchecked { proposal.highCount++; }
         }
 
-        voted[msg.sender][proposalId] = true;
+        voted[msg.sender][_proposalId] = true;
+        emit Voted(msg.sender, _proposalId, vote);
     }
 
     function calculateWinningVote(Proposal memory proposal) internal view returns (Vote) {
