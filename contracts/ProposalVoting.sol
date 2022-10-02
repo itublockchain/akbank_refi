@@ -41,6 +41,13 @@ contract ProposalVoting is ERC20 {
     mapping(uint256 => Proposal) public idToProposal;
     mapping(address => mapping(uint256 => bool)) public voted;
 
+    event ProposalCreated(
+        address creator,
+        uint256 startTime,
+        string content,
+        string name
+    );
+
     constructor(string memory name, string memory symbol, address _membershipAddress) ERC20(name, symbol) {
         membership = IMembership(_membershipAddress);
     }
@@ -65,6 +72,7 @@ contract ProposalVoting is ERC20 {
 
         idToProposal[_proposalId] = proposal;
         unchecked { _proposalId++; }
+        emit ProposalCreated(msg.sender, block.timestamp, content, _name);
     }
 
     function settleVote(uint256 proposalId) external onlyMember {
