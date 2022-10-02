@@ -19,8 +19,8 @@ contract Fundraiser is ERC1155 {
     
     uint256 fundraiseId;
     IMembership membership;
-    mapping(uint256 => Fundraise) IdToFundraise;
-    mapping(uint256 => uint256) IdToTotalSupply;
+    mapping(uint256 => Fundraise) public IdToFundraise;
+    mapping(uint256 => uint256) public IdToTotalSupply;
 
     constructor(string memory uri, address _membershipAddress) ERC1155(uri) {
         membership = IMembership(_membershipAddress);
