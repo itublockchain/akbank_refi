@@ -32,9 +32,9 @@ const Landing = () => {
         <img src={L2}></img>
 
         <div className={styles.text}>
-          DAO'laşma sürecinde erken aşamadaki topluluklar, üyelerinin sağladığı
-          katkıların derecelendirilip bu üyelerinin çeşitli faydalara
-          ulaştırılmasında şeffaf ve doğrulanabilir bir operasyon mekanizması
+          DAO'lasma sürecinde erken asamadaki topluluklar, üyelerinin sağladığı
+          katkıların derecelendirilip bu üyelerinin cesitli faydalara
+          ulastırılmasında seffaf ve doğrulanabilir bir operasyon mekanizması
           yaratamamaktadır.
         </div>
       </div>
@@ -42,8 +42,8 @@ const Landing = () => {
       <div className={styles.thirtBlood}>
         <div className={styles.text}>
           Toplulukları, üyelerin harcadığı emeklere göre katmanlara ayıran bir
-          sosyal hub; topluluğun ihtiyaçlarının belirlenmesinin ve çeşitli
-          destekleyicilerle buluşmasının, üyelere ise ürünlerinin eşler
+          sosyal hub; topluluğun ihtiyaclarının belirlenmesinin ve cesitli
+          destekleyicilerle bulusmasının, üyelere ise ürünlerinin esler
           tarafından doğrulanarak yayınlanmasının ve bu katkıları sebebiyle
           tokenlar ile ödüllendirilmesinin sağlanacağı bir ortam sunar.
         </div>
