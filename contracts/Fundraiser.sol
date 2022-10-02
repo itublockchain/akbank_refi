@@ -9,6 +9,7 @@ interface IMembership {
 
 contract Fundraiser is ERC1155 {
     struct Fundraise {
+        string name;
         uint48 startTime;
         uint48 finishTime;
         address fundHolder;
@@ -31,15 +32,15 @@ contract Fundraiser is ERC1155 {
         _;
     }
 
-    function startFundraise(uint48 startTime, uint48 finishTime, address fundHolder, uint256 pricePerBasis) external onlyMember {
+    function startFundraise(string calldata name, uint48 startTime, uint48 finishTime, address fundHolder, uint256 pricePerBasis) external onlyMember {
         require(block.timestamp <= startTime, "start time must be future");
         require(startTime < finishTime, "invalid finish time");
-        Fundraise memory newFundraise = Fundraise(startTime, finishTime, fundHolder, pricePerBasis);
+        Fundraise memory newFundraise = Fundraise(name, startTime, finishTime, fundHolder, pricePerBasis);
         IdToFundraise[fundraiseId] = newFundraise;
         unchecked { fundraiseId++; }
     }
 
-    function helpFund(uint256 _fundraiseId) external payable {
+    function fund(uint256 _fundraiseId) external payable {
         Fundraise memory fundraise = IdToFundraise[_fundraiseId];
         require(block.timestamp >= fundraise.startTime, "fundraise have not started");
         require(block.timestamp <= fundraise.finishTime, "fundraise over");

@@ -22,6 +22,7 @@ contract ProposalVoting is ERC20 {
         uint88 startTime;
         bool settled;
         string content;
+        string name;
         uint64 denyCount;
         uint64 lowCount;
         uint64 mediumCount;
@@ -49,12 +50,13 @@ contract ProposalVoting is ERC20 {
         _;
     }
 
-    function startVote(string calldata content) external onlyMember {
+    function startVote(string calldata content, string calldata _name) external onlyMember {
         Proposal memory proposal = Proposal(
             msg.sender,
             uint88(block.timestamp),
             false,
             content,
+            _name,
             0,
             0,
             0,

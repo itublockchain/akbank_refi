@@ -8,7 +8,7 @@ contract MembershipNFT is ERC721, Ownable {
     uint256 private _tokenId;
     uint256 private _totalSupply;
     
-    mapping(address => uint256) addressToId;
+    mapping(address => uint256) public addressToId;
     
     constructor(string memory name, string memory symbol) ERC721(name, symbol) {}
 
