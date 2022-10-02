@@ -12,16 +12,25 @@ contract Fundraiser is ERC1155 {
         string name;
         uint48 startTime;
         uint48 finishTime;
-        address fundHolder;
-        uint256 pricePerBasis;
+        address fundHolder; //address which donations will be directed to
+        uint256 pricePerBasis; //price of one piece, total expected donation / 10_000
     }
 
-    uint256 constant HUNDRED_PERCENT_BPS = 10_000;
+    uint256 constant HUNDRED_PERCENT_BPS = 10_000; //total number of pieces
     
-    uint256 fundraiseId;
-    IMembership membership;
-    mapping(uint256 => Fundraise) public IdToFundraise;
-    mapping(uint256 => uint256) public IdToTotalSupply;
+    uint256 private _fundraiseId;
+    IMembership membership; //organization membership NFT 
+    mapping(uint256 => Fundraise) public idToFundraise;
+    mapping(uint256 => uint256) public idToTotalSupply;
+
+    event NewFundraise(
+        uint256 fundraiseId,
+        string name,
+        uint48 startTime,
+        uint48 finishTime,
+        address fundHolder,
+        uint256 pricePerBasis
+    );
 
     constructor(string memory uri, address _membershipAddress) ERC1155(uri) {
         membership = IMembership(_membershipAddress);
@@ -32,23 +41,26 @@ contract Fundraiser is ERC1155 {
         _;
     }
 
-    function startFundraise(string calldata name, uint48 startTime, uint48 finishTime, address fundHolder, uint256 pricePerBasis) external onlyMember {
+    function startFundraise(string calldata name, uint48 startTime, uint48 finishTime, address fundHolder, uint256 pricePerBasis) external onlyMember returns (uint256) {
         require(block.timestamp <= startTime, "start time must be future");
         require(startTime < finishTime, "invalid finish time");
         Fundraise memory newFundraise = Fundraise(name, startTime, finishTime, fundHolder, pricePerBasis);
-        IdToFundraise[fundraiseId] = newFundraise;
-        unchecked { fundraiseId++; }
+        uint256 newId = _fundraiseId;
+        idToFundraise[newId] = newFundraise;
+        unchecked { _fundraiseId++; }
+        emit NewFundraise(newId, name, startTime, finishTime, fundHolder, pricePerBasis);
+        return newId;
     }
 
-    function fund(uint256 _fundraiseId) external payable {
-        Fundraise memory fundraise = IdToFundraise[_fundraiseId];
+    function fund(uint256 __fundraiseId) external payable {
+        Fundraise memory fundraise = idToFundraise[__fundraiseId];
         require(block.timestamp >= fundraise.startTime, "fundraise have not started");
         require(block.timestamp <= fundraise.finishTime, "fundraise over");
         uint256 amount = msg.value / fundraise.pricePerBasis;
         require(amount > 0, "insufficient payment");
-        require(IdToTotalSupply[_fundraiseId] + amount <= HUNDRED_PERCENT_BPS, "total supply exceeds max");
-        _mint(msg.sender, _fundraiseId, amount, "");
-        unchecked { IdToTotalSupply[_fundraiseId] += amount; }
+        require(idToTotalSupply[__fundraiseId] + amount <= HUNDRED_PERCENT_BPS, "total supply exceeds max");
+        _mint(msg.sender, __fundraiseId, amount, "");
+        unchecked { idToTotalSupply[__fundraiseId] += amount; }
         address payable fundReceiver = payable(fundraise.fundHolder);
         (bool success, ) = fundReceiver.call{value: msg.value}("");
         require(success);
