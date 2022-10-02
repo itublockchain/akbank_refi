@@ -42,6 +42,7 @@ contract ProposalVoting is ERC20 {
     mapping(address => mapping(uint256 => bool)) public voted;
 
     event ProposalCreated(
+        uint256 proposalId,
         address creator,
         uint256 startTime,
         string content,
@@ -85,7 +86,7 @@ contract ProposalVoting is ERC20 {
 
         idToProposal[newId] = proposal;
         unchecked { proposalId++; }
-        emit ProposalCreated(msg.sender, block.timestamp, content, _name);
+        emit ProposalCreated(newId, msg.sender, block.timestamp, content, _name);
         return newId;
     }
 

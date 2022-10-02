@@ -24,6 +24,7 @@ contract Fundraiser is ERC1155 {
     mapping(uint256 => uint256) public idToTotalSupply;
 
     event NewFundraise(
+        uint256 fundraiseId,
         string name,
         uint48 startTime,
         uint48 finishTime,
@@ -47,7 +48,7 @@ contract Fundraiser is ERC1155 {
         uint256 newId = _fundraiseId;
         idToFundraise[newId] = newFundraise;
         unchecked { _fundraiseId++; }
-        emit NewFundraise(name, startTime, finishTime, fundHolder, pricePerBasis);
+        emit NewFundraise(newId, name, startTime, finishTime, fundHolder, pricePerBasis);
         return newId;
     }
 
