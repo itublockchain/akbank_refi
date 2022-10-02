@@ -45,7 +45,8 @@ const Banner = ({ imgUrl, teamName = "ITU Blockchain" }: BannerProps) => {
       </div>
       <div className={styles.content}>
         <h1 className={styles.name}>
-          Ulas {teamName ? `- ${teamName}` : null}
+          Ulaş Erdoğan
+          {/* {teamName ? `- ${teamName}` : null} */}
         </h1>
         <p className={styles.joinDate}>2 December, 2022</p>
       </div>

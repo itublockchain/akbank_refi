@@ -32,19 +32,20 @@ const Landing = () => {
         <img src={L2}></img>
 
         <div className={styles.text}>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum
-          suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan
-          lacus vel facilisis.
+          DAO'laşma sürecinde erken aşamadaki topluluklar, üyelerinin sağladığı
+          katkıların derecelendirilip bu üyelerinin çeşitli faydalara
+          ulaştırılmasında şeffaf ve doğrulanabilir bir operasyon mekanizması
+          yaratamamaktadır.
         </div>
       </div>
       <div className={styles.intervalText}>BLA BLA BLA</div>
       <div className={styles.thirtBlood}>
         <div className={styles.text}>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum
-          suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan
-          lacus vel facilisis.
+          Toplulukları, üyelerin harcadığı emeklere göre katmanlara ayıran bir
+          sosyal hub; topluluğun ihtiyaçlarının belirlenmesinin ve çeşitli
+          destekleyicilerle buluşmasının, üyelere ise ürünlerinin eşler
+          tarafından doğrulanarak yayınlanmasının ve bu katkıları sebebiyle
+          tokenlar ile ödüllendirilmesinin sağlanacağı bir ortam sunar.
         </div>
         <img src={L3}></img>
       </div>

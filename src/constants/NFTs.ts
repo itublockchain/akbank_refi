@@ -6,29 +6,29 @@ export const NFTs = [
     title: "Avalanche - Barcelona",
     price: 1000,
   },
-  {
-    image: HACKATHON,
-    title: "Avalanche - Barcelona",
-    price: 1000,
-  },
-  {
-    image: HACKATHON,
-    title: "Avalanche - Barcelona",
-    price: 1000,
-  },
-  {
-    image: HACKATHON,
-    title: "Avalanche - Barcelona",
-    price: 1000,
-  },
-  {
-    image: HACKATHON,
-    title: "Avalanche - Barcelona",
-    price: 1000,
-  },
-  {
-    image: HACKATHON,
-    title: "Avalanche - Barcelona",
-    price: 1000,
-  },
+  // {
+  //   image: HACKATHON,
+  //   title: "Avalanche - Barcelona",
+  //   price: 1000,
+  // },
+  // {
+  //   image: HACKATHON,
+  //   title: "Avalanche - Barcelona",
+  //   price: 1000,
+  // },
+  // {
+  //   image: HACKATHON,
+  //   title: "Avalanche - Barcelona",
+  //   price: 1000,
+  // },
+  // {
+  //   image: HACKATHON,
+  //   title: "Avalanche - Barcelona",
+  //   price: 1000,
+  // },
+  // {
+  //   image: HACKATHON,
+  //   title: "Avalanche - Barcelona",
+  //   price: 1000,
+  // },
 ];
