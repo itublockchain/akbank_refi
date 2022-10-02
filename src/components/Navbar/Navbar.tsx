@@ -18,7 +18,9 @@ const Navbar = () => {
     <div className={styles.wrapper}>
       <div className={styles.navbar}>
         <div className={styles.logo}>
-          <img src={LOGO2}></img>
+          <a href="http://localhost:3000">
+            <img src={LOGO2}></img>
+          </a>
           <div>Ağaç Dikemedik Ama</div>
         </div>
 
