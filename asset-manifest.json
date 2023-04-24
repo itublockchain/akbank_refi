@@ -1,0 +1,37 @@
+{
+  "files": {
+    "main.css": "/akbank_refi/static/css/main.842bcc03.css",
+    "main.js": "/akbank_refi/static/js/main.de04b46d.js",
+    "static/js/787.12b02391.chunk.js": "/akbank_refi/static/js/787.12b02391.chunk.js",
+    "static/media/avalancheDay.png": "/akbank_refi/static/media/avalancheDay.e2334a4d0afeafdda877.png",
+    "static/media/tshirt.png": "/akbank_refi/static/media/tshirt.b419f151f4dd3ea3ab0e.png",
+    "static/media/ITUBCvsAvax.png": "/akbank_refi/static/media/ITUBCvsAvax.fb88d0051a716bb1b25c.png",
+    "static/media/hackathon.png": "/akbank_refi/static/media/hackathon.7adeacd5d97f3c2ce380.png",
+    "static/media/avalancheBarcelona.png": "/akbank_refi/static/media/avalancheBarcelona.2fdd0b6c0e3bae55632c.png",
+    "static/media/landing3.png": "/akbank_refi/static/media/landing3.3389ad540d78999380b5.png",
+    "static/media/blockchainNights.png": "/akbank_refi/static/media/blockchainNights.cd39c4475a0b4176f144.png",
+    "static/media/calender.png": "/akbank_refi/static/media/calender.40b60017a85bb4432c61.png",
+    "static/media/landing1.png": "/akbank_refi/static/media/landing1.c9da8cc76b039bdedb6e.png",
+    "static/media/akbank.png": "/akbank_refi/static/media/akbank.2154a07a4c9eed6bf968.png",
+    "static/media/landing2.png": "/akbank_refi/static/media/landing2.e332cbf06f571bf41fb9.png",
+    "static/media/header.png": "/akbank_refi/static/media/header.f68dfd96f47fadded646.png",
+    "static/media/ethvsavax.png": "/akbank_refi/static/media/ethvsavax.d27bfcd15509f67af6a4.png",
+    "static/media/header.jpeg": "/akbank_refi/static/media/header.44c58c26ffb61bdce646.jpeg",
+    "static/media/tokenengineering.png": "/akbank_refi/static/media/tokenengineering.058ec30c511f97e2b957.png",
+    "static/media/ulas.png": "/akbank_refi/static/media/ulas.35f9f1e37cc95efb1672.png",
+    "static/media/alim.png": "/akbank_refi/static/media/alim.deb0f3638b9922ea2ead.png",
+    "static/media/hatun.png": "/akbank_refi/static/media/hatun.b3bb8a600bbf56d0a4de.png",
+    "static/media/tahos81.png": "/akbank_refi/static/media/tahos81.6a0f3e469180158af8bf.png",
+    "static/media/ITUBCLogo.jpeg": "/akbank_refi/static/media/ITUBCLogo.a79aa085687b8e199c03.jpeg",
+    "static/media/avalanche.png": "/akbank_refi/static/media/avalanche.ebde103aa2cbb4fd7327.png",
+    "static/media/logo.svg": "/akbank_refi/static/media/logo.84c2e9dcea5aba51731e8fe9394b8c1a.svg",
+    "index.html": "/akbank_refi/index.html",
+    "main.842bcc03.css.map": "/akbank_refi/static/css/main.842bcc03.css.map",
+    "main.de04b46d.js.map": "/akbank_refi/static/js/main.de04b46d.js.map",
+    "787.12b02391.chunk.js.map": "/akbank_refi/static/js/787.12b02391.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.842bcc03.css",
+    "static/js/main.de04b46d.js"
+  ]
+}
